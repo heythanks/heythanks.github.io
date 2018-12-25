@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="初识HTTP协议HTTP,英文全称是HyperText Transfer Protocol,中文释义就是超文本传输协议。设计HTTP最初的目的是为了提供一种发布和接受HTML页面的方法。作为一个靠谱的前端，了解HTTP是义不容辞的。  相识HTTP协议何为相识HTTP协议呢？比如你跟某某相识，能用到相识这个词，不说相互之间有多知根知底，至少你是知道这个人，大概的为人如何？有什么特点？对，这里就是要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于HTTP">
+<meta property="og:url" content="http://yoursite.com/2018/12/25/关于HTTP/index.html">
+<meta property="og:site_name" content="逸雪">
+<meta property="og:description" content="初识HTTP协议HTTP,英文全称是HyperText Transfer Protocol,中文释义就是超文本传输协议。设计HTTP最初的目的是为了提供一种发布和接受HTML页面的方法。作为一个靠谱的前端，了解HTTP是义不容辞的。  相识HTTP协议何为相识HTTP协议呢？比如你跟某某相识，能用到相识这个词，不说相互之间有多知根知底，至少你是知道这个人，大概的为人如何？有什么特点？对，这里就是要">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-25T09:26:43.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于HTTP">
+<meta name="twitter:description" content="初识HTTP协议HTTP,英文全称是HyperText Transfer Protocol,中文释义就是超文本传输协议。设计HTTP最初的目的是为了提供一种发布和接受HTML页面的方法。作为一个靠谱的前端，了解HTTP是义不容辞的。  相识HTTP协议何为相识HTTP协议呢？比如你跟某某相识，能用到相识这个词，不说相互之间有多知根知底，至少你是知道这个人，大概的为人如何？有什么特点？对，这里就是要">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/25/关于HTTP/">
+
+
+
+
+
+  <title>关于HTTP | 逸雪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">逸雪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/关于HTTP/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LYX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逸雪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于HTTP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T14:57:11+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="初识HTTP协议"><a href="#初识HTTP协议" class="headerlink" title="初识HTTP协议"></a>初识HTTP协议</h3><p>HTTP,英文全称是HyperText Transfer Protocol,中文释义就是超文本传输协议。设计HTTP最初的目的是为了提供一种发布和接受HTML页面的方法。作为一个靠谱的前端，了解HTTP是义不容辞的。</p>
+<hr>
+<h3 id="相识HTTP协议"><a href="#相识HTTP协议" class="headerlink" title="相识HTTP协议"></a>相识HTTP协议</h3><p>何为相识HTTP协议呢？比如你跟某某相识，能用到相识这个词，不说相互之间有多知根知底，至少你是知道这个人，大概的为人如何？有什么特点？对，这里就是要介绍HTTP的特点，如下：</p>
+<h4 id="1、HTTP协议用于客户端和服务器之间的通信"><a href="#1、HTTP协议用于客户端和服务器之间的通信" class="headerlink" title="1、HTTP协议用于客户端和服务器之间的通信"></a>1、HTTP协议用于客户端和服务器之间的通信</h4><p>HTTP协议用于客户端与服务器之间通信，在一条通信线路上必定存在一端客户端，另一端口服务器端。有时候两台计算机客户端和服务器端的身份可能互换，用HTTP协议能够明确区分身份。</p>
+<h4 id="2、通过请求和响应的交换达成通信"><a href="#2、通过请求和响应的交换达成通信" class="headerlink" title="2、通过请求和响应的交换达成通信"></a>2、通过请求和响应的交换达成通信</h4><p>两端通过请求和响应的交换达成通信。举个小栗子：小明去商店买酱油，这次交易的过程肯定是小明跟老板说： “我要一瓶酱油”。老板听到了小明说得话然后从商店找出一瓶酱油给小明，小明拿着酱油开心的离开了…<br>这个过程中，小明就是通信过程中的<strong>客户端</strong>角色，他要买酱油的这个过程就是请求，老板作为<strong>服务器端</strong>角色，他接收到<strong>请求</strong>了，然后理解请求，再作出<strong>响应</strong>。</p>
+<h4 id="3、HTTP是不保存状态的协议"><a href="#3、HTTP是不保存状态的协议" class="headerlink" title="3、HTTP是不保存状态的协议"></a>3、HTTP是不保存状态的协议</h4><p>首先给你们讲个笑话</p>
+<blockquote>
+<p>小鱼问大鱼：“妈妈，为什么他们说鱼的记忆只有七秒啊？”大鱼说：“你刚才说啥？”小鱼说：“啥？”大鱼说：“干啥啊？”小鱼说：“咋地了？”  </p>
+</blockquote>
+<p>不知道大家能不能从这个栗子中理解，什么叫不保存状态也就是无状态。虽然这里有个小bug,既然只有七秒记忆怎么知道这是他妈呢？这个，我也不知道，有兴趣的可以咨询生物学家或者忽略：）。我这里想表达的是，每一次通信过程中，都是一个全新的请求与响应，并不知道上一次发生了什么。这个性质对于我们的业务处理是不太方便的，当然这样设置有这样设置的原因。比如，用户登录一家购物网站，即使他跳到该站其他的页面后，也要继续保持登录。虽然HTTP是无状态的协议，但为了实现保持状态的功能，于是引入了<strong>Cookie技术</strong>。</p>
+<h4 id="4、请求URI定位资源"><a href="#4、请求URI定位资源" class="headerlink" title="4、请求URI定位资源"></a>4、请求URI定位资源</h4><p>URI（Uniform Resource Identifer）统一资源标识符，这种标识允许用户对网络中的资源通过特定的协议进行交互操作。URI最常见的形式是统一资源定位符（URL）也就是我们平时上网时浏览器中地址栏的内容，俗称链接。另外一种就形式就是统一资源名称（URN）,至于具体解释大家可以上维基百科查询。</p>
+<hr>
+<h3 id="熟识HTTP协议"><a href="#熟识HTTP协议" class="headerlink" title="熟识HTTP协议"></a>熟识HTTP协议</h3><p>HTTP 请求组成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">part 1(动词 路径 协议/版本)</span><br><span class="line">part 2(key1: value1)</span><br><span class="line">part 2(Content-Type: application/x-www-form-urlencoded)</span><br><span class="line">part 2(Host: www.baidu.com)</span><br><span class="line">part 3(***\n***)</span><br><span class="line">part 4(要上传给服务器端的数据)</span><br></pre></td></tr></table></figure></p>
+<p>注：  </p>
+<ol>
+<li>请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）</li>
+<li>第三部分永远是一个回车（\n）</li>
+<li>动词有GET POST PUT PATCH DELETE HEAD OPTIONS等</li>
+<li>第2部分中的Content-Type标注了第4部分的格式</li>
+</ol>
+<p>HTTP 响应组成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">part 1(协议/版本 状态码 状态解释)</span><br><span class="line">part 2(key1: value1)</span><br><span class="line">part 2(Content-Length: 17931)</span><br><span class="line">part 2(Content-Type: text/html)</span><br><span class="line">part 3(***\n***)</span><br><span class="line">part 4(要客户端下载的内容)</span><br></pre></td></tr></table></figure></p>
+<h4 id="用浏览器中开发者工具解剖HTTP请求"><a href="#用浏览器中开发者工具解剖HTTP请求" class="headerlink" title="用浏览器中开发者工具解剖HTTP请求"></a>用浏览器中开发者工具解剖HTTP请求</h4><ol>
+<li>打开Chrome浏览器中的开发者工具 </li>
+<li>选中面板上的Network选项</li>
+<li>输入网址打开网站</li>
+<li>点击选中Network中的第一个请求（左侧弹出一个面板）</li>
+<li>查看左侧面板中的条目有General,Response Headers,Request Headers,Query String Parameters。<br>要看请求直接展开Request Headers,点击view source,跟Request Headers同一行，展开才有，如果旁边是view parsed那就不用点击了，里面的内容便是http请求的组成。同理Response Headers是http响应的组成。<br><strong>注</strong>：Request Headers与Response Headers中的第一行是part 1,其他的key: value形式的都是part 2,part 3换行所以没显示。请求的第四部分在Query String Parameters中，响应的第四部分可以通过左侧面板上侧tab切换到Preview或者Response查看。  <h4 id="curl命令模拟http的一次请求"><a href="#curl命令模拟http的一次请求" class="headerlink" title="curl命令模拟http的一次请求"></a>curl命令模拟http的一次请求</h4>在命令行工具中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//模拟GE请求</span><br><span class="line">curl -s -v -H &quot;Test: xxx&quot; -- &quot;https://www.baidu.com&quot;</span><br><span class="line">//模拟POST请求</span><br><span class="line">curl -X POST -s -v -H &quot;Test: xxx&quot; -- &quot;https://www.baidu.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>具体输出会在命令行工具中打印出来，关于curl命令参数及其具体介绍，<a href="http://man.linuxde.net/curl" target="_blank" rel="noopener">点击这里</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/23/基本的git命令学习/" rel="next" title="基本的git命令学习">
+                <i class="fa fa-chevron-left"></i> 基本的git命令学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">LYX</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#初识HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">初识HTTP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相识HTTP协议"><span class="nav-number">2.</span> <span class="nav-text">相识HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、HTTP协议用于客户端和服务器之间的通信"><span class="nav-number">2.1.</span> <span class="nav-text">1、HTTP协议用于客户端和服务器之间的通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、通过请求和响应的交换达成通信"><span class="nav-number">2.2.</span> <span class="nav-text">2、通过请求和响应的交换达成通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、HTTP是不保存状态的协议"><span class="nav-number">2.3.</span> <span class="nav-text">3、HTTP是不保存状态的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、请求URI定位资源"><span class="nav-number">2.4.</span> <span class="nav-text">4、请求URI定位资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#熟识HTTP协议"><span class="nav-number">3.</span> <span class="nav-text">熟识HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用浏览器中开发者工具解剖HTTP请求"><span class="nav-number">3.1.</span> <span class="nav-text">用浏览器中开发者工具解剖HTTP请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#curl命令模拟http的一次请求"><span class="nav-number">3.2.</span> <span class="nav-text">curl命令模拟http的一次请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LYX</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
