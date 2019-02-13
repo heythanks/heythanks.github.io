@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JS中的数据类型种类JS的数据类型有number,string,undefined,null,object,boolean,symbol共七种。(symbol为ES6新增数据类型)123456数值（number）：整数和小数（比如2和3，14）字符串（string）：文本（比如hello world）布尔值（boolean）: 表示真伪的两个特殊值，即true(真)和false（假）undefin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS里的数据类型">
+<meta property="og:url" content="http://yoursite.com/2019/02/13/JS里的数据类型/index.html">
+<meta property="og:site_name" content="逸雪">
+<meta property="og:description" content="JS中的数据类型种类JS的数据类型有number,string,undefined,null,object,boolean,symbol共七种。(symbol为ES6新增数据类型)123456数值（number）：整数和小数（比如2和3，14）字符串（string）：文本（比如hello world）布尔值（boolean）: 表示真伪的两个特殊值，即true(真)和false（假）undefin">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-13T07:46:59.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS里的数据类型">
+<meta name="twitter:description" content="JS中的数据类型种类JS的数据类型有number,string,undefined,null,object,boolean,symbol共七种。(symbol为ES6新增数据类型)123456数值（number）：整数和小数（比如2和3，14）字符串（string）：文本（比如hello world）布尔值（boolean）: 表示真伪的两个特殊值，即true(真)和false（假）undefin">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/13/JS里的数据类型/">
+
+
+
+
+
+  <title>JS里的数据类型 | 逸雪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">逸雪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/JS里的数据类型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LYX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逸雪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS里的数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-13T15:46:29+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="JS中的数据类型种类"><a href="#JS中的数据类型种类" class="headerlink" title="JS中的数据类型种类"></a>JS中的数据类型种类</h3><p><strong>JS的数据类型有number,string,undefined,null,object,boolean,symbol共七种。(symbol为ES6新增数据类型)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">数值（number）：整数和小数（比如2和3，14）</span><br><span class="line">字符串（string）：文本（比如hello world）</span><br><span class="line">布尔值（boolean）: 表示真伪的两个特殊值，即true(真)和false（假）</span><br><span class="line">undefined: 表示“未定义”或不存在</span><br><span class="line">null: 表示空值，即此处的值为空</span><br><span class="line">对象（object）: 各种值组成的集合</span><br></pre></td></tr></table></figure></p>
+<p>数值、字符串、布尔值这三种类型，合成为原始类型（primitive type）的值，即它们是最基本的数据类型，不能再细分了。对象则成为合成类型（complex type）的值,一个对象往往是原始类型的值合成的。</p>
+<hr>
+<h4 id="数值（number）"><a href="#数值（number）" class="headerlink" title="数值（number）"></a>数值（number）</h4><h5 id="整数和浮点"><a href="#整数和浮点" class="headerlink" title="整数和浮点"></a>整数和浮点</h5><p>JavaScript内部，所有数字都是以64位浮点数形式存储，即使整数也如此，1和1.0是同一个数。也就死说，JS语言底层根本没有整数，所有数字都是小数（64位浮点数）。由于浮点数不是精确的值，所以涉及小数的比较和运算要特别小心。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.1 + 0.2 === 0.3;//false</span><br><span class="line">0.3 / 0.1//2.999999999996</span><br></pre></td></tr></table></figure></p>
+<h5 id="数值的进制"><a href="#数值的进制" class="headerlink" title="数值的进制"></a>数值的进制</h5><p>使用字面量（literal）直接表示一个数值时，JavaScript对整数提供四种进制的表示方法：十六进制，十进制，八进制，二进制。默认情况下，JS内部会自动将八进制、十六进制、二进制转为十进制。如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//十六进制</span><br><span class="line">0xff//255</span><br><span class="line">//八进制</span><br><span class="line">0o377 //255</span><br><span class="line">//二进制</span><br><span class="line">0b11 //3</span><br></pre></td></tr></table></figure></p>
+<h5 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h5><p>NaN是JS的特殊值，表示“非数字”（Not a Number）,主要出现在将字符串解析成数字的场合。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 - &apos;x&apos; //NaN</span><br></pre></td></tr></table></figure></p>
+<p>NaN不等于任何值，包括它本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN === NaN //false</span><br></pre></td></tr></table></figure></p>
+<h5 id="数值的全局方法"><a href="#数值的全局方法" class="headerlink" title="数值的全局方法"></a>数值的全局方法</h5><ol>
+<li>parseInt(): parseInt方法用于将字符串转为整数，如果字符串头部有空格，空格会被去除，parseInt解析是逐个解析。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;123&apos;)//123</span><br><span class="line">parseInt(&apos; 86&apos;)//86</span><br><span class="line">parseInt(&apos;1111aaaa&apos;)//1111</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>parseInt还可以进行进制转换，第二个参数接收数值的进制，默认为10进制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;1000&apos;);//1000</span><br><span class="line">//等同于</span><br><span class="line">parseInt(&apos;1000&apos;,10)</span><br><span class="line">//转换指定进制数</span><br><span class="line">parseInt(&apos;1000&apos;,2)//8</span><br><span class="line">parseInt(&apos;1000&apos;,8)//512</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>isNaN():<br>isNaN只对数值有效，如果传入其他值，会被先转成数值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNaN(&apos;world&apos;)//true</span><br><span class="line">isNaN(3.14)//false</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="字符串（string）"><a href="#字符串（string）" class="headerlink" title="字符串（string）"></a>字符串（string）</h4><p>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;abc&apos;;</span><br><span class="line">&quot;jdj&quot;</span><br></pre></td></tr></table></figure></p>
+<h5 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h5><p>反斜杠（\）在字符串内有特殊含义，用来表示一些特殊字符，所以又成为转义符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\0: null(\u0000);</span><br><span class="line">\b: 后退键（\u0008）</span><br><span class="line">\f: 换页符（\u000c）</span><br><span class="line">\n: 换行符（\u000A</span><br><span class="line">\r: 回车键 （\u000D）</span><br><span class="line">\t: 制表符 （\u0009）</span><br><span class="line">\v: 垂直制表符（\u000b）</span><br><span class="line">\&apos;: 单引号（\u0027）</span><br><span class="line">\&quot;: 双引号（\u0022）</span><br><span class="line">\\: 反斜杠（\u005c）</span><br></pre></td></tr></table></figure></p>
+<h5 id="字符串与数组"><a href="#字符串与数组" class="headerlink" title="字符串与数组"></a>字符串与数组</h5><p>字符串可以被视为字符数组，因此可以使用数组的方括号运算符，用来返回某个位置的字符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;hello&apos;;</span><br><span class="line">s[0] //&apos;h&apos;</span><br><span class="line">a[4]//&apos;o&apos;</span><br></pre></td></tr></table></figure></p>
+<h5 id="Base64转码"><a href="#Base64转码" class="headerlink" title="Base64转码"></a>Base64转码</h5><p>有时，文本里面包含一些不可打印的符号，比如ASCII码0到31的符号都无法打印出来，这时可以使用Base64编码，将它们转成可打印的字符。另一个场景，有时需要以文本格式传递二进制数据，也可以使用Base64编码。<br>Base64就是一种编码方法，可以将任意值转成0～9、A-Z、a-z、+和/这64个字符组成的可打印字符。使用它的主要目的，不是为另加密，而是为了不出现特殊字符，简化程序的处理。<br>JS原生提供两个Base64相关方法<br>btoa():任意值转为Base64编码<br>atob():Base64转为原来的值</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/30/关于css布局/" rel="next" title="关于css布局">
+                <i class="fa fa-chevron-left"></i> 关于css布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">LYX</p>
+              <p class="site-description motion-element" itemprop="description">Yisure 个人站，前端技术，学习实践</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的数据类型种类"><span class="nav-number">1.</span> <span class="nav-text">JS中的数据类型种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值（number）"><span class="nav-number">1.1.</span> <span class="nav-text">数值（number）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#整数和浮点"><span class="nav-number">1.1.1.</span> <span class="nav-text">整数和浮点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数值的进制"><span class="nav-number">1.1.2.</span> <span class="nav-text">数值的进制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NaN"><span class="nav-number">1.1.3.</span> <span class="nav-text">NaN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数值的全局方法"><span class="nav-number">1.1.4.</span> <span class="nav-text">数值的全局方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串（string）"><span class="nav-number">1.2.</span> <span class="nav-text">字符串（string）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转义"><span class="nav-number">1.2.1.</span> <span class="nav-text">转义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串与数组"><span class="nav-number">1.2.2.</span> <span class="nav-text">字符串与数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Base64转码"><span class="nav-number">1.2.3.</span> <span class="nav-text">Base64转码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LYX</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
