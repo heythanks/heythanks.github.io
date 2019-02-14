@@ -252,6 +252,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/14/JS里的数据类型转换/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LYX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逸雪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/14/JS里的数据类型转换/" itemprop="url">JS里的数据类型转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-14T08:00:41+08:00">
+                2019-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>JS中的七种数据类型分别是number,string,null,undefined,symbol,boolean,object。除了object，其他六种类型都是基本数据类型，object是复杂数据类型，由基本数据类型组成。</strong></p>
+<h4 id="从其他类型转换为string"><a href="#从其他类型转换为string" class="headerlink" title="从其他类型转换为string"></a>从其他类型转换为string</h4><ul>
+<li><p>toString()方法<br>使用toString()方法,number和boolean能正常转换为字符串,object运行出来结果为[object Object],null和undefined调用时报错，没有toString()属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(1).toString() //&quot;1&quot;</span><br><span class="line">true.toString() //&quot;true&quot;</span><br><span class="line">null.toString() //Uncaught TypeError: Canot read property...</span><br><span class="line">undefined.toString() //Uncaught TypeError: Canot read property...</span><br><span class="line">(&#123;&#125;).toString();//&quot;[object Object]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String()构造函数</p>
+</li>
+<li><p>老司机惯用  “” +</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 + &apos;&apos; //&apos;1&apos;</span><br><span class="line">true + &apos;&apos; //&apos;true&apos;</span><br><span class="line">null + &apos;&apos; //&apos;null&apos;</span><br><span class="line">undefined + &apos;&apos; //&apos;undefined&apos;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj + &apos;&apos; //&apos;[object Object]&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="从其他类型转换为boolean"><a href="#从其他类型转换为boolean" class="headerlink" title="从其他类型转换为boolean"></a>从其他类型转换为boolean</h4><ul>
+<li><p>Boolean(‘1’)函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Boolean(1) //true</span><br><span class="line">Boolean(0) //false</span><br><span class="line">Boolean(&apos;&apos;) //false</span><br><span class="line">Boolean(&apos;123&apos;) //true</span><br><span class="line">Boolean(&#123;&#125;) // true</span><br><span class="line">Boolean(&apos;     &apos;) //true</span><br><span class="line">Boolean(null) //false</span><br><span class="line">Boolean(&#123;&#125;) //true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抖机灵方法<br>使用取反运算，取反两次得到boolean值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!!(0) //false</span><br><span class="line">!!&#123;&#125; //true</span><br><span class="line">!!undefined //false</span><br><span class="line">!!null //false</span><br><span class="line">!!(1) //true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于Boolean值的总结除了五个falsy值为false,其他都为true。六个falsy值分别为0，’’,NaN,null,undefined，false。</p>
+<h4 id="从其他类型转为number"><a href="#从其他类型转为number" class="headerlink" title="从其他类型转为number"></a>从其他类型转为number</h4><ul>
+<li>Number()构造函数</li>
+<li>parseInt()函数</li>
+<li>parseFloat()函数</li>
+<li>使用 -0 方法</li>
+<li>使用 +号 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number(&apos;1&apos;) === 1 //true</span><br><span class="line">parseInt(&apos;1&apos;,10) === 1 //true</span><br><span class="line">parseFloat(&apos;1.23&apos;) === 1.23 //true</span><br><span class="line">(&apos;1&apos; - 0) === 1 //true</span><br><span class="line">(+ &apos;1&apos;) === 1 //true</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/JS里的数据类型/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1101,7 +1247,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
