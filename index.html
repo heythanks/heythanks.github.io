@@ -252,6 +252,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/原型与原型链/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LYX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逸雪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/原型与原型链/" itemprop="url">原型与原型链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T00:27:53+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><p>全局对象在标准上叫global,在浏览器上叫作window。window的属性是个hash表。window属性包括两种：1、ECMAScript规定的，如parseInt(),parseFloat()等 2、浏览器私有属性，alert(),prompt()，document(文档，DOM由W3C制定规范)等</p>
+<h3 id="公有属性"><a href="#公有属性" class="headerlink" title="公有属性"></a>公有属性</h3><p>实例在<strong>proto</strong>上引用公有属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">var obj1 = new Object()</span><br><span class="line">obj.toString();//[object Object]</span><br><span class="line">obj.__proto__.toString();//[object Object]</span><br><span class="line">obj.toString() === obj.__proto__.toString();//true</span><br><span class="line">obj.toString() === obj1.toString()//true</span><br></pre></td></tr></table></figure></p>
+<p>用new关键字声明number,string,boolean会得到一个对象，对象的<strong>proto</strong>指向该类型的公有属性集合，在往上一层追溯会得到object的公有属性集合，再往上就是null,如下初始化number<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var n = new Number(1)</span><br><span class="line">n.__proto__ === Number.prototype;//true</span><br><span class="line">n.__proto__.__proto__ === Object.prototype;//true</span><br><span class="line">n.__proto__.__proto__.__proto__ === null;//true</span><br></pre></td></tr></table></figure></p>
+<p>如果初始化数据为对象则往上追溯过程为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj.__proto__ === Object.prototype //true</span><br><span class="line">obj.__proto__.__proto__ ===  //true</span><br></pre></td></tr></table></figure></p>
+<p>如上，往上追溯的一个过程就形成了原型链</p>
+<h3 id="proto与prototype"><a href="#proto与prototype" class="headerlink" title="proto与prototype"></a><strong>proto</strong>与prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var 对象 = new 函数（）</span><br><span class="line">对象.__proto__ === 函数.prototype；</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//推算</span><br><span class="line">函数.protype.__proto__ === Object.prototype;//true</span><br><span class="line">函数.__proto__ === Function.prototype;//true</span><br><span class="line">Function.__proto__ === Function.prototype;//true</span><br><span class="line">Function.prototype.__proto__ === Object.protype</span><br><span class="line">Object.__proto__ === Function.prototype//Function是Object的构造函数</span><br></pre></td></tr></table></figure>
+<p>由此可见<strong>proto</strong>为实例的属性，prototype为构造函数的属性，都是对公用属性进行引用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/14/JS里的数据类型转换/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1247,7 +1374,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
